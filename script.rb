@@ -9,3 +9,7 @@ ActiveRecord::Base.establish_connection(dbconfig)
 ActiveRecord::Base.logger = Logger.new(File.open('database.log', 'a'))
 
 Dir.glob("./models/*").each {|t| require t}
+
+
+im=Imslp.new("http://imslp.org/wiki/Category:Composers")
+p im.getAllComposers()
