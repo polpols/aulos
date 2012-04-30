@@ -1,0 +1,66 @@
+D, [2012-04-30T15:33:55.568525 #6735] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+D, [2012-04-30T15:33:55.570495 #6735] DEBUG -- :   [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+D, [2012-04-30T15:33:55.570653 #6735] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+D, [2012-04-30T15:33:55.571924 #6735] DEBUG -- :   [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2012-04-30T15:33:55.574194 #6735] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2012-04-30T15:33:55.574273 #6735]  INFO -- : Migrating to CreateComposers (1)
+D, [2012-04-30T15:33:55.574423 #6735] DEBUG -- :   [1m[35m (0.0ms)[0m  begin transaction
+D, [2012-04-30T15:33:55.576401 #6735] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCREATE TABLE "composers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "surname" varchar(255) NOT NULL, "url" varchar(255) NOT NULL, "pict" varchar(255) NOT NULL) [0m
+D, [2012-04-30T15:33:55.576890 #6735] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('1')
+D, [2012-04-30T15:33:55.578165 #6735] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+I, [2012-04-30T15:33:55.578237 #6735]  INFO -- : Migrating to CreateWorks (2)
+D, [2012-04-30T15:33:55.578451 #6735] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2012-04-30T15:33:55.580661 #6735] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "works" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255) NOT NULL, "composer_id" integer NOT NULL) [0m
+D, [2012-04-30T15:33:55.581147 #6735] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('2')
+D, [2012-04-30T15:33:55.582267 #6735] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+I, [2012-04-30T15:33:55.582323 #6735]  INFO -- : Migrating to AddUrlToWorks (3)
+D, [2012-04-30T15:33:55.582505 #6735] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2012-04-30T15:33:55.583924 #6735] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mALTER TABLE "works" ADD "url" varchar(255)[0m
+D, [2012-04-30T15:33:55.584373 #6735] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('3')
+D, [2012-04-30T15:33:55.585396 #6735] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+I, [2012-04-30T15:33:55.585446 #6735]  INFO -- : Migrating to AddSourceToWorks (4)
+D, [2012-04-30T15:33:55.585611 #6735] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2012-04-30T15:33:55.586965 #6735] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mALTER TABLE "works" ADD "source" varchar(255)[0m
+D, [2012-04-30T15:33:55.587400 #6735] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('4')
+D, [2012-04-30T15:33:55.588507 #6735] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+I, [2012-04-30T15:33:55.588565 #6735]  INFO -- : Migrating to AddOriginToComposer (5)
+D, [2012-04-30T15:33:55.588713 #6735] DEBUG -- :   [1m[35m (0.0ms)[0m  begin transaction
+D, [2012-04-30T15:33:55.589618 #6735] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+D, [2012-04-30T15:36:34.114734 #6774] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2012-04-30T15:36:34.114851 #6774]  INFO -- : Migrating to CreateComposers (1)
+I, [2012-04-30T15:36:34.114944 #6774]  INFO -- : Migrating to CreateWorks (2)
+I, [2012-04-30T15:36:34.114971 #6774]  INFO -- : Migrating to AddUrlToWorks (3)
+I, [2012-04-30T15:36:34.114997 #6774]  INFO -- : Migrating to AddSourceToWorks (4)
+I, [2012-04-30T15:36:34.115023 #6774]  INFO -- : Migrating to AddOriginToComposer (5)
+D, [2012-04-30T15:36:34.115191 #6774] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2012-04-30T15:36:34.115386 #6774] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+D, [2012-04-30T15:36:34.129292 #6774] DEBUG -- :   [1m[35m (0.1ms)[0m  rollback transaction
+D, [2012-04-30T15:36:50.219436 #6778] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2012-04-30T15:36:50.219546 #6778]  INFO -- : Migrating to CreateComposers (1)
+I, [2012-04-30T15:36:50.219634 #6778]  INFO -- : Migrating to CreateWorks (2)
+I, [2012-04-30T15:36:50.219661 #6778]  INFO -- : Migrating to AddUrlToWorks (3)
+I, [2012-04-30T15:36:50.219687 #6778]  INFO -- : Migrating to AddSourceToWorks (4)
+I, [2012-04-30T15:36:50.219713 #6778]  INFO -- : Migrating to AddOriginToComposer (5)
+D, [2012-04-30T15:36:50.219872 #6778] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2012-04-30T15:36:50.220068 #6778] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+D, [2012-04-30T15:36:50.233854 #6778] DEBUG -- :   [1m[35m (0.1ms)[0m  rollback transaction
+D, [2012-04-30T15:37:38.956417 #6793] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2012-04-30T15:37:38.956532 #6793]  INFO -- : Migrating to CreateComposers (1)
+I, [2012-04-30T15:37:38.956564 #6793]  INFO -- : Migrating to CreateWorks (2)
+I, [2012-04-30T15:37:38.956591 #6793]  INFO -- : Migrating to AddUrlToWorks (3)
+I, [2012-04-30T15:37:38.956618 #6793]  INFO -- : Migrating to AddSourceToWorks (4)
+I, [2012-04-30T15:37:38.956645 #6793]  INFO -- : Migrating to AddOriginToComposers (5)
+D, [2012-04-30T15:37:38.956778 #6793] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2012-04-30T15:37:38.956935 #6793] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+D, [2012-04-30T15:37:38.958253 #6793] DEBUG -- :   [1m[35m (0.5ms)[0m  ALTER TABLE "composers" ADD "origin" varchar(255)
+D, [2012-04-30T15:37:38.958741 #6793] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('5')[0m
+D, [2012-04-30T15:37:38.959847 #6793] DEBUG -- :   [1m[35m (1.0ms)[0m  commit transaction
+I, [2012-04-30T15:37:38.959910 #6793]  INFO -- : Migrating to AddLifeToComposers (6)
+D, [2012-04-30T15:37:38.960067 #6793] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+D, [2012-04-30T15:37:38.961281 #6793] DEBUG -- :   [1m[35m (0.4ms)[0m  ALTER TABLE "composers" ADD "life" varchar(255)
+D, [2012-04-30T15:37:38.961698 #6793] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('6')[0m
+D, [2012-04-30T15:37:38.962732 #6793] DEBUG -- :   [1m[35m (0.9ms)[0m  commit transaction
+D, [2012-04-30T15:53:31.904566 #7092] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2012-04-30T15:53:31.937866 #7092] DEBUG -- :   [1m[35mSQL (31.6ms)[0m  INSERT INTO "composers" ("life", "name", "origin", "pict", "surname", "url") VALUES (?, ?, ?, ?, ?, ?)  [["life", "1723-1787"], ["name", ["Abel", " Carl Friedrich", "Allemagne / Germany", "1723-1787"]], ["origin", "Allemagne / Germany"], ["pict", nil], ["surname", " Carl Friedrich"], ["url", nil]]
+D, [2012-04-30T15:53:31.937948 #7092] DEBUG -- : SQLite3::ConstraintException: composers.url may not be NULL: INSERT INTO "composers" ("life", "name", "origin", "pict", "surname", "url") VALUES (?, ?, ?, ?, ?, ?)
+D, [2012-04-30T15:53:31.938192 #7092] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

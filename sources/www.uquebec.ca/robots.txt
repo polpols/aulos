@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /reusite
+Disallow: /cgingras/entrenous/
+Disallow: /unique/
+Disallow: /uniquexpress/
+Disallow: /dino/
+Disallow: /drmf/
+Disallow: /coloss/
+Disallow: /sondage/
+
