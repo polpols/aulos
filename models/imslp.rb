@@ -25,11 +25,15 @@ class Imslp
     comps=[]
     css="#mw-subcategories * li a"
     page.css(css).each do |a| 
-      @comps<< "#{a.text}|#{@root}#{a.get_attribute("href")}\n"
+      getComposer(a)
+      #@comps<< "#{a.text}|#{@root}#{a.get_attribute("href")}\n"
     end
     return comps
   end
-  
+  def getComposer(line)
+    return [a.text.split(","),a.get_attribute("href"),a.root]
+    
+  end
   def getAllComposers(page="http://imslp.org/wiki/Category:Composers")
     page=Nokogiri::HTML(open(page))
     getComposersInPage(page)
