@@ -1,6 +1,6 @@
 require "rubygems"
 require "open-uri"
-require "Nokogiri"
+require "nokogiri"
 
 class Imslp
   attr_accessor :page

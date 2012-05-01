@@ -1,6 +1,7 @@
+require 'rubygems'
 require 'active_record'
 require 'yaml'
-require 'Logger'
+require 'logger'
 
 Dir.glob("./models/*").each {|t| require t}
 
@@ -13,7 +14,7 @@ task :migrate => :environment do
 end
 
 task :environment do
-  ActiveRecord::Base.establish_connection(YAML::load(File.open('db/db-2.yml')))
+  ActiveRecord::Base.establish_connection(YAML::load(File.open('db/uquebec.yml')))
   ActiveRecord::Base.logger = Logger.new(File.open('database.log', 'a'))
 end
 

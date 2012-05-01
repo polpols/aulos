@@ -2,7 +2,7 @@ require 'rubygems'
 require 'active_record'
 require 'yaml'
 require 'sqlite3'
-require 'Logger'
+require 'logger'
 
 dbconfig = YAML::load(File.open('db/db.yml'))
 ActiveRecord::Base.establish_connection(dbconfig)
