@@ -1,0 +1,13 @@
+root="http://imslp.org"
+
+require 'nokogiri'
+require 'open-uri'
+a='http://imslp.org/wiki/Category:Composers'
+doc=Nokogiri::HTML(open(a))
+css="#mw-subcategories * li a"
+comp =doc.css(css)[22]
+line=comp
+c=root+line.get_attribute("href")
+doc_c=Nokogiri::HTML(open(c))
+doc_c.css(".cp_firsth")
+
