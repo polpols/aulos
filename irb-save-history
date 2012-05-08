@@ -1,13 +1,100 @@
-root="http://imslp.org"
-
-require 'nokogiri'
-require 'open-uri'
-a='http://imslp.org/wiki/Category:Composers'
-doc=Nokogiri::HTML(open(a))
+ww= /\(.*\)/.match(aa.text)
+ww
+ww.to_s
+require "./helpers/imslp.rb"
+require "./helpers/imslp.rb"
+puts root
+page =Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers"))
 css="#mw-subcategories * li a"
-comp =doc.css(css)[22]
-line=comp
-c=root+line.get_attribute("href")
-doc_c=Nokogiri::HTML(open(c))
-doc_c.css(".cp_firsth")
-
+page.css(css).each[1]
+page.css(css)[1]
+p1=page.css(css)[1]
+p1.get_attribute("hreg")
+p1.get_attribute("href")
+root="http://imslp.org"
+url=root+p1.get_attribute("href")
+new_data=Nokogiri::HTML(open(url))
+    life=/\(.*\)/.match(new_data.css("div.cp_firsth").text).to_s if new_data.css("div.cp_firsth").text!=""
+new_data.css("div.cp_firsth").text!=""
+new_data.css("div.cp_firsth").text
+p24=page.css(css)[24]
+new24=Nokogiri::HTML(open(root+p24.get_attribute(href))
+new24
+new24=Nokogiri::HTML(open(root+p24.get_attribute("href"))
+p24
+p p24
+p24=page.css(css)[24]=
+p24=page.css(css)[24]
+page
+require "./helpers/imslp.rb"
+page =Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers"))
+css="#mw-subcategories * li a"
+p24=page.css(css)[24]
+new24=Nokogiri::HTML(open(root+p24.get_attribute("href"))
+p24
+page.css(css)[24]
+page
+page
+require "./helpers/imslp.rb"
+page =Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers"))
+page
+p24=page.css(css)[24]
+  css="#mw-subcategories * li a"
+p24=page.css(css)[24]
+p24
+p24-to_s
+p24.to_s
+p24.get_attribute("href")
+root="http://imslp.org"
+n=Nokogiri::HTML(open(root+p24.get_attribute("href")))
+n.css(".cp_firsth")
+n.css(".cp_firsth").text
+n.css(".cp_firsth").text!=""
+getComposersInPage(Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers")))
+root="http://imslp.org"
+getComposersInPage(Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers")))
+require "./helpers/imslp.rb"
+getComposersInPage(Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers")))
+require "./helpers/imslp.rb"
+getComposersInPage(Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers")))
+Dir.glob("../models/*").each do |m|
+  require m
+end
+Dir.glob("./models/*").each do |m|
+  require m
+end
+require 'helpers/script.rb'
+require './helpers/script.rb'
+page =Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers"))
+require 'Nokogiri'
+page =Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers"))
+require 'open-uri'
+page =Nokogiri::HTML(open("http://imslp.org/wiki/Category:Composers"))
+root="http://imslp.org"
+css
+css="#mw-subcategories * li a"
+p24=page.css(css)[24]
+p1=page.css(css)[1]
+p1
+p24
+Nokogiri::HTML(open(root+p24.get_attribute("href"))
+p24
+end
+p24
+Nokogiri::HTML(open(root+p24.get_attribute("href")))
+Nokogiri::HTML(open(root+p24.get_attribute("href"))).css("div.firsth")
+aa=Nokogiri::HTML(open(root+p24.get_attribute("href"))).css("div.firsth")
+aa=Nokogiri::HTML(open(root+p24.get_attribute("href")))
+aa.css(".firsth")
+p24
+aa
+aa.text
+aa.text
+aa.to_s
+aa.to_s
+aa.css(".cp_firsth")
+aa
+Composer.new do |c|
+line.text
+p24
+end
