@@ -19,5 +19,7 @@ task :environment do
 end
 
 task :imslp do
-
+  ActiveRecord::Base.establish_connection(YAML::load(File.open('db/imslp.yml')))
+  ActiveRecord::Base.logger = Logger.new(File.open('database.log', 'a'))
+  ActiveRecord::Migrator.migrate('db/migrate', ENV["VERSION"] ? ENV["VERSION"].to_i : nil )
 end

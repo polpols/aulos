@@ -1,6 +1,15 @@
-require "rubygems"
-require "open-uri"
-require "nokogiri"
+require 'rubygems'
+require 'active_record'
+require 'yaml'
+require 'sqlite3'
+require 'logger'
+require 'nokogiri'
+require 'open-uri'
+
+dbconfig = YAML::load(File.open('db/imslp.yml'))
+ActiveRecord::Base.establish_connection(dbconfig)
+ActiveRecord::Base.logger = Logger.new(File.open('database.log', 'a'))
+
 
 Dir.glob("../models/*").each do |m|
   require m
@@ -23,19 +32,15 @@ def getAllComposers(page="http://imslp.org/wiki/Category:Composers")
   if cond != "" 
     getAllComposers("#{@root}#{cond}")
   end
-  #return @comps
-  #@comps.close()
 end
 
 # Grab composers name surname link in a given page.
 def getComposersInPage(page)
-  comps=[]
-  css="#mw-subcategories * li a"
-  page.css(css).each do |line| 
+  page.css(@composer_list_css).each do |line| 
     url=@root+line.get_attribute("href")
-    new_data=Nokogiri::HTML(open(url))
-    life=/\(.*\)/.match(new_data.css("div.cp_firsth").text).to_s if new_data.css("div.cp_firsth").text!=""
-    pict=new_data.css(".cp_img a").get_attribute("href") if new_data.css(".cp_img").text!=""
+    comp_data=Nokogiri::HTML(open(url))
+    life=/\(.*\)/.match(comp_data.css(@life_date_css).text).to_s if comp_data.css(@life_date_css).text!=""
+    pict=comp_data.css(@img_css).get_attribute("href") if comp_data.css(@img_css).text!=""
     Composer.new(
     :name=>line.text.split(",")[0],
     :surname=>line.text.split(",")[1],
@@ -43,27 +48,18 @@ def getComposersInPage(page)
     :life=>life 
     )
   end
-  return comps
 end
 
 # Finds the << Next 200 >> button in a page and retrieves url if it has one.
 def getNextPage(page)
-  css="div[style='text-align:center;font-size:150%;font-weight:bold'] a"
   url=""
-  page.css(css).each do |t| 
+  page.css(@next_page_css).each do |t| 
     if t.text=="next 200" 
       url=t.get_attribute("href")
       end
   end
   return url
 end
-
- 
-def getComposer(line)
-  return [line.text.split(",")[0],line.text.split(",")[1],root+a.get_attribute("href")]
-  
-end
-
 
 def getWorksInPage(page)
    works=[]
