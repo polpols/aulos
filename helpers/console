@@ -1,0 +1,3 @@
+#!/bin/bash
+
+IRBRC='/Users/polpols/src/aulos/irbrc' irb1.9

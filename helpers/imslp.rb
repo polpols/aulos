@@ -11,7 +11,7 @@ ActiveRecord::Base.establish_connection(dbconfig)
 ActiveRecord::Base.logger = Logger.new(File.open('database.log', 'a'))
 
 
-Dir.glob("../models/*").each do |m|
+Dir.glob("./models/*").each do |m|
   require m
 end
 
